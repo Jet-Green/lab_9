@@ -212,6 +212,18 @@ namespace lab_9
             GeoCoordinates c10 = new GeoCoordinates(12, 123);
 
             Console.WriteLine(c9.Equals(c10));
+
+            GeoCoordinatesArray emptyCoordinatesArray = new GeoCoordinatesArray();
+            try
+            {
+                emptyCoordinatesArray.Show();
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+            GeoCoordinatesArray coordinatesArray = new GeoCoordinatesArray(12);
+            coordinatesArray.Show();
         }
     }
 }
