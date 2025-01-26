@@ -203,8 +203,15 @@ namespace lab_9
 
             Console.WriteLine(c5 == c6);
 
-            GeoCoordinates c7 = new GeoCoordinates(-67.66, 71);
-            GeoCoordinates c8 = new GeoCoordinates(-67.66, 91);
+            GeoCoordinates c7 = new GeoCoordinates(-68.66, 71);
+            GeoCoordinates c8 = new GeoCoordinates(-67.66, 71);
+
+            Console.WriteLine(c7 != c8);
+
+            GeoCoordinates c9 = new GeoCoordinates(12, 123);
+            GeoCoordinates c10 = new GeoCoordinates(12, 123);
+
+            Console.WriteLine(c9.Equals(c10));
         }
     }
 }
