@@ -152,6 +152,8 @@ namespace lab_9
         }
 
         public override bool Equals(object obj) {
+            if (obj == null || !(obj is GeoCoordinates)) return false;
+
             var objToCompare = obj as GeoCoordinates;
             if (Longitude == objToCompare.Longitude && Latitude == objToCompare.Latitude)
             {
