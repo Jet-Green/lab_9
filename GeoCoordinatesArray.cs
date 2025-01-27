@@ -8,7 +8,7 @@ namespace lab_9
 {
     internal class GeoCoordinatesArray
     {
-        GeoCoordinates[] coordinatesArr;
+        private GeoCoordinates[] coordinatesArr;
 
         private static Random rnd = new Random();
 

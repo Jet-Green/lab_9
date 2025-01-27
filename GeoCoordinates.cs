@@ -9,8 +9,8 @@ namespace lab_9
 {
     internal class GeoCoordinates
     {
-        double latitude; // широта
-        double longitude; // долгота
+        private double latitude; // широта
+        private double longitude; // долгота
 
         public static int objCount = 0;
 
