@@ -145,13 +145,15 @@ namespace lab_9
         // true, если на разных меридианах
         public static bool operator != (GeoCoordinates c1, GeoCoordinates c2)
         {
-            if (c1.Latitude != c2.Latitude) {
+            if (c1.Latitude != c2.Latitude)
+            {
                 return true;
             }
             return false;
         }
 
-        public override bool Equals(object obj) {
+        public override bool Equals(object obj) 
+        {
             if (obj == null || !(obj is GeoCoordinates)) return false;
 
             var objToCompare = obj as GeoCoordinates;
