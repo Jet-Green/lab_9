@@ -166,7 +166,12 @@ namespace lab_9
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+            }
 
+            GeoCoordinates c1 = new GeoCoordinates(57.973190, 56.168477);
+            c1.Show();
+            GeoCoordinates c2 = new GeoCoordinates(57.727685, 54.765219);
+            c2.Show();
 
             Console.WriteLine($"Кол-во созданных объектов: {GeoCoordinates.objCount}");
 
