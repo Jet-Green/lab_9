@@ -7,7 +7,7 @@ using static System.Math;
 
 namespace lab_9
 {
-    internal class GeoCoordinates
+    public class GeoCoordinates
     {
         private double latitude; // широта
         private double longitude; // долгота
@@ -130,6 +130,11 @@ namespace lab_9
                 return "Западная долгота";
             }
             return "";
+        }
+
+        public override string ToString()
+        {
+            return $"Широта: {Latitude}\nДолгота: {Longitude}";
         }
 
         // если на одной параллели

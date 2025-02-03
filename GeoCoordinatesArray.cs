@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace lab_9
 {
-    internal class GeoCoordinatesArray
+    public class GeoCoordinatesArray
     {
         private GeoCoordinates[] coordinatesArr;
 
         private static Random rnd = new Random();
+
+        public static int arrCount = 0;
 
         public static double NextDouble(
             double minValue,
@@ -30,16 +32,21 @@ namespace lab_9
         public GeoCoordinatesArray()
         {
             CoordinatesArr = [];
+            arrCount++;
         }
         // create random 
-        public GeoCoordinatesArray(int length)
+        public GeoCoordinatesArray(int length, bool isRandom = true)
         {
             CoordinatesArr = new GeoCoordinates[length];
 
-            for (int i = 0; i < length; i++)
+            if (isRandom)
             {
-                CoordinatesArr[i] = new GeoCoordinates(NextDouble(-90, 90), NextDouble(-180, 180));
+                for (int i = 0; i < length; i++)
+                {
+                    CoordinatesArr[i] = new GeoCoordinates(NextDouble(-90, 90), NextDouble(-180, 180));
+                }
             }
+            arrCount++;
         }
         // copying
         public GeoCoordinatesArray(GeoCoordinatesArray arrToCopy)
@@ -49,6 +56,26 @@ namespace lab_9
             for (int i = 0; i < arrToCopy.coordinatesArr.Length; i++)
             {
                 CoordinatesArr[i] = new GeoCoordinates(arrToCopy.coordinatesArr[i]);
+            }
+            arrCount++;
+        }
+
+        public GeoCoordinates this[int index]
+        {
+            get {
+                if (index < 0 || index >= CoordinatesArr.Length)
+                {
+                    throw new Exception($"Индекс {index} за пределами массива");
+                }
+                return CoordinatesArr[index];
+            }
+            set
+            {
+                if (index < 0 || index >= CoordinatesArr.Length)
+                {
+                    throw new Exception($"Индекс {index} за пределами массива");
+                }
+                CoordinatesArr[index] = value;
             }
         }
 

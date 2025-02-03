@@ -145,9 +145,27 @@ namespace lab_9
     }
 
 
-
     internal class Program
     {
+        public static GeoCoordinates NearestToNemo(GeoCoordinatesArray arr)
+        {
+            double min = double.MaxValue;
+            GeoCoordinates minCoord = new GeoCoordinates();
+
+            for(int i = 0; i < arr.CoordinatesArr.Length; i++)
+            {
+                GeoCoordinates gc = arr[i];
+
+                double dist = gc.GetDistance(0, 0);
+                if (dist < min)
+                {
+                    minCoord = gc;
+                    min = dist; 
+                }
+            }
+
+            return minCoord;
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Задание №1");
@@ -189,9 +207,9 @@ namespace lab_9
 
             c4.Show();
 
-            bool a = (bool) c4;
+            bool a = (bool)c4;
             Console.WriteLine(a);
-            bool b = (bool) new GeoCoordinates(0, 12);
+            bool b = (bool)new GeoCoordinates(0, 12);
             Console.WriteLine(b);
 
             Console.WriteLine(c3);
@@ -219,9 +237,87 @@ namespace lab_9
             {
                 Console.WriteLine(e.Message);
             }
-            
+
             GeoCoordinatesArray coordinatesArray = new GeoCoordinatesArray(12);
             coordinatesArray.Show();
+            try
+            {
+                Console.WriteLine(coordinatesArray[123]);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            double DoubleInput(string msg)
+            {
+                double res = 0;
+
+                Console.WriteLine(msg);
+
+                double.TryParse(Console.ReadLine(), out res);
+
+                return res;
+            }
+
+            GeoCoordinatesArray gca = new GeoCoordinatesArray(3, false);
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"Объект №{i + 1}");
+                double lat = DoubleInput("Введите широту: ");
+                double lon = DoubleInput("Введите долготу: ");
+                
+                try
+                {
+                    gca[i] = new GeoCoordinates(lat, lon);
+                } catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    i--;
+                }
+            }
+
+            gca.Show();
+
+            Console.WriteLine("копия: ");
+            GeoCoordinatesArray copiedArr = new GeoCoordinatesArray(gca);
+
+            copiedArr.Show();
+
+            Console.WriteLine("№ 4.4");
+            GeoCoordinatesArray gca1 = new GeoCoordinatesArray(3);
+            gca1.Show();
+            gca1[0] = new GeoCoordinates(12, 44);
+            Console.WriteLine("Обновленный массив: ");
+            gca1.Show();
+            Console.WriteLine("с индексом 0: " + gca1[0].ToString());
+
+            try
+            {
+                gca1[123] = new GeoCoordinates(12, 33);
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
+
+            try
+            {
+                Console.WriteLine(gca1[123]);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine("№4.5");
+            Console.WriteLine("Ищем в массиве:");
+            gca1.Show();
+
+            Console.WriteLine("Найдено: " + NearestToNemo(gca1).ToString());
+
+            Console.WriteLine("\n\n\n");
+            Console.WriteLine($"Кол-во созданных объектов: {GeoCoordinates.objCount}");
+            Console.WriteLine($"Кол-во созданных массивов: {GeoCoordinatesArray.arrCount}");
         }
     }
 }
