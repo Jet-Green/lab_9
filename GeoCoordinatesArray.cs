@@ -34,7 +34,7 @@ namespace lab_9
             CoordinatesArr = [];
             arrCount++;
         }
-        // create random 
+        // create random or just an empty array with length.
         public GeoCoordinatesArray(int length, bool isRandom = true)
         {
             CoordinatesArr = new GeoCoordinates[length];

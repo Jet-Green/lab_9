@@ -229,6 +229,8 @@ namespace lab_9
 
             Console.WriteLine(c9.Equals(c10));
 
+            Console.WriteLine("\n\n\nЗадание №3");
+
             GeoCoordinatesArray emptyCoordinatesArray = new GeoCoordinatesArray();
             try
             {
@@ -237,7 +239,6 @@ namespace lab_9
             {
                 Console.WriteLine(e.Message);
             }
-
             GeoCoordinatesArray coordinatesArray = new GeoCoordinatesArray(12);
             coordinatesArray.Show();
             try
