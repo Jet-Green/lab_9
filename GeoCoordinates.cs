@@ -168,5 +168,10 @@ namespace lab_9
             }
             return false;
         }
+
+        public void Method()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
