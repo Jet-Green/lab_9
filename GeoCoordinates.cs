@@ -14,7 +14,7 @@ namespace lab_9
 
         public static int objCount = 0;
 
-        static double R = 6371;
+        public static double R = 6371;
 
         public double Latitude
         {
@@ -117,17 +117,17 @@ namespace lab_9
         // неявный
         public static implicit operator string(GeoCoordinates c)
         {
-            if (c.Longitude == 0)
-            {
-                return "Нулевой меридиан";
-            }
-            else if (c.Latitude > 0)
+            if (c.Latitude > 0)
             {
                 return "Восточная долгота";
             }
-            else if (c.Longitude < 0)
+            if (c.Longitude < 0)
             {
                 return "Западная долгота";
+            }
+            if (c.Longitude == 0)
+            {
+                return "Нулевой меридиан";
             }
             return "";
         }
